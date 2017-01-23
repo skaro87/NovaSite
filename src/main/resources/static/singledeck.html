@@ -1,0 +1,71 @@
+{{test}}
+
+
+<div class="row">
+	<div class="aspects col-lg-2 col-sm-2 col-xs-5">
+		<p>
+			<img ng-src="/img/aspects/{{deck.aspectOne}}.png"></img> <img
+				ng-src="/img/aspects/{{deck.aspectTwo}}.png"></img>
+		</p>
+		<p>
+			<img src="img/icons/nanobots.png"></img> : {{getTotalCostInBots()}}
+		</p>
+	</div>
+
+	<div class="col-lg-8 col-sm-8 text-center deck-header hidden-xs">
+
+		<h2>{{deck.name}}</h2>
+		<p>
+			Created by: <span class="text-capitalize">{{deck.owner}}</span>
+		</p>
+
+	</div>
+
+	<div class="col-lg-2 col-sm-2 col-xs-7 icons text-right">
+		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+		{{deck.views}} 
+		<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			{{deck.likes}}<span ng-show="authenticated && deckowner"> 
+			EDIT BUTTON
+		</span>
+
+
+	</div>
+
+</div>
+
+<div class="row visible-xs">
+	<div class="col-xs-12 text-center deck-header">
+		<h2>{{deck.name}}</h2>
+		<p>
+			Created by: <span class="text-capitalize">{{deck.owner}}</span>
+		</p>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-lg-9 col-sm-9 col-xs-12">
+
+
+		<div ng-repeat="card in deck.cardsInDeck | orderBy:cardCost">
+			<div class="col-lg-4 col-sm-4 col-xs-12">
+				[{{cards[card.id-1].cost}}] {{cards[card.id-1].name}} :
+				{{card.quantity}}</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-3 col-xs-12">
+
+		<canvas id="bar" class="chart chart-bar" chart-data="chartData"
+			chart-labels="chartLabels" chart-series="chartSeries" chart-options="chartOptions" chart-colors="chartColors">
+		</canvas>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+
+		<h3>About the deck</h3>
+		{{deck.description}}
+	</div>
+</div>
+

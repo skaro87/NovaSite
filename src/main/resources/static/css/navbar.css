@@ -1,0 +1,54 @@
+#imgbanner {
+	z-index: 1;
+	opacity: 0;
+}
+
+#imglogo {
+	max-height: 50%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+}
+
+@media ( max-width : 769px) {
+	.navbar-center {
+		position: absolute;
+		width: 30%;
+		left: 0;
+		top: 0;
+		text-align: center;
+		overflow: visible;
+		height: 0;
+	}
+	#imgbanner {
+		min-height: 50px;
+	}
+	
+	#imglogo {
+	max-height: 73px;
+}
+}
+
+@media ( max-width : 550px) {
+	#imglogo {
+	max-height: 50px;
+}
+}
+
+@media ( max-width : 397px) {
+	#banner {
+		overflow-x: hidden;
+	}
+	#imgbanner {
+		max-width: 397px;
+	}
+}
+
+
+#navbutton {
+	position: absolute;
+	height: 100%;
+	bottom: 0;
+	right: 0;
+}

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Exo');
+
+body {
+	overflow-x: hidden;
+	font-family: 'Exo', sans-serif;
+}
+
+h1, h2, h3 {
+	color: #009cc7;
+	text-align: center;
+}
+
+.jumbotron h1 {
+	color: #009cc7;
+}
+
+a {
+	color: #000000;
+}
+
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+
+.big-button {
+	width: 80%;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+
+.sort-dropdown {
+	text-align: center;
+}
+
+.reset-btn {
+	text-align: right;
+	padding-bottom: 10px;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.aspects {
+	float: left;
+}
+
+.aspects img {
+	max-height: 24px;
+}
+
+.icons {
+	color: #009cc7;
+	font-size: 1.4em;
+}
+
+.deck-header h2 {
+	margin-top: 0;
+}
+
+.deck-header img {
+	max-height: 20px;
+}
+
+
+@media ( max-width : 769px) {
+}
+
+@media ( max-width : 550px) {
+	
+}

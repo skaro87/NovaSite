@@ -1,0 +1,85 @@
+package se.skaro.data.user;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "userid")
+	private Long userId;
+	@Column(name = "username")
+	private String username;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "email")
+	private String email;
+	@Column(name = "enabled")
+	private int enabled;
+
+	public User() {
+
+	}
+
+	public User(User user) {
+		this.userId = user.userId;
+		this.username = user.username;
+		this.email = user.email;
+		this.password = user.password;
+		this.enabled = user.enabled;
+	}
+
+	public User(String username, String password, String email) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.enabled = 1;
+	}
+
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+
+	public Long getUserid() {
+		return userId;
+	}
+
+	public void setUserid(Long userid) {
+		this.userId = userid;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUserName() {
+		return username;
+	}
+
+	public void setUserName(String userName) {
+		this.username = userName;
+	}
+}

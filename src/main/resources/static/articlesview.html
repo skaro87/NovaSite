@@ -1,0 +1,31 @@
+<div>
+
+
+	<div class="jumbotron article-preview">
+		<a href="#/articles/1">
+			<h1>{{content[0].headline}}</h1> 
+			<img class="img-responsive hidden-xs" ng-src="{{content[0].imageUrl}}" />
+			<div class=author>{{content[0].time | date:'MMM-dd yyyy'}} - {{content[0].author}}</div>
+			<p class="lead">{{content[0].preview}}</p>
+		</a>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-4 article-preview" ng-repeat-start="i in content"
+			ng-if="$index >= 1">
+			<a href="#/articles/{{i.id}}">
+				<h2>{{i.headline}}</h2> <img class="img-responsive hidden-xs"
+				ng-src="{{i.imageUrl}}" />
+				<div class=author>{{i.time | date:'MMM-dd yyyy'}} -
+					{{i.author}}</div>
+
+				<p>{{i.preview}}</p>
+			</a>
+		</div>
+		<div class="clearfix" ng-if="$index%3==0"></div>
+		<div ng-repeat-end=""></div>
+	</div>
+
+
+
+</div>

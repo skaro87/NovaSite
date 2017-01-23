@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DeckBlitz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/articles.css">
+
+</head>
+<body ng-app=app ng-cloak class="ng-cloak">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+	<script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/filter.js"></script>
+	<script src="/js/controller.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$.get("/banner", function(data) {
+				$("#imgbanner").attr("src", data.image);
+				var img = new Image();
+				img.src = data.image;
+				img.onload = function() {
+					$("#imgbanner").attr("src", data.image);
+					$("#imgbanner").animate({
+						opacity : 1
+					}, 800);
+				};
+
+			});
+		});
+	</script>
+
+	<div class="content">
+
+
+		<div>
+
+			<nav class="navbar navbar-default navbar-static-top">
+
+				<div class="banner" id="banner">
+
+					<img class="img-responsive" id="imglogo"
+						src="/img/logo2boldshadow.png"></img> <img class="img-responsive"
+						id="imgbanner" src="/img/banner/placeholder.png"></img>
+
+					<div id=navbutton>
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+					</div>
+				</div>
+
+				<div ng-controller="logoutController as logout" class="container">
+					<div class="navbar-header hidden-xs"></div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="#/" data-toggle="collapse"
+								data-target=".navbar-collapse.in">Home</a></li>
+							<li><a href="#/articles" data-toggle="collapse"
+								data-target=".navbar-collapse.in">Articles</a></li>
+							<li><a href="#/cards" data-toggle="collapse"
+								data-target=".navbar-collapse.in">Cards</a></li>
+							<li><a href="#/decks" data-toggle="collapse"
+								data-target=".navbar-collapse.in">Decks</a></li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#/about" data-toggle="collapse"
+								data-target=".navbar-collapse.in">About</a></li>
+							<li ng-show="!authenticated"><a href="#/login"
+								data-toggle="collapse" data-target=".navbar-collapse.in">Login</a></li>
+							<li ng-show="authenticated" class="capitalize"><a href=""
+								ng-click="logout.logout()" data-toggle="collapse"
+								data-target=".navbar-collapse.in">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/.nav-collapse -->
+			</nav>
+
+		</div>
+
+		<div class="container">
+
+			<div ng-view></div>
+
+			<footer class="footer">
+				<p class="text-muted">DeckBlitz created by Skaro 2016</p>
+			</footer>
+
+		</div>
+
+
+	</div>
+</body>
+</html>

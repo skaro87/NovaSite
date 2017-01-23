@@ -1,0 +1,34 @@
+<div class="row">
+		<p>Name: {{deck.name}}</p>
+		<p>Created by: {{deck.owner}}</p>
+		<p>Description: {{deck.description}}</p>
+</div>
+<div class="row">
+		
+		<table>
+		
+		<tbody ng-repeat="card in deck.cardsInDeck">
+	
+		<tr>
+		<td><a class="btn btn-primary" ng-click="deleteCard(card)">Delete</a></td>	
+		<td><a class="btn btn-primary" ng-click="removeCard(card)">-</a></td>
+		<td><a class="btn btn-primary" ng-click="addCard(card)">+</a></td>
+		<td></td>
+		
+		
+		<td>{{card.quantity}}</td>
+		<td>{{cards[card.id].name}} </td>
+		</tr>
+		</tbody>
+		</table>
+</div>	
+
+
+<div class="row">
+		
+		<p>Number of cards: {{ getTotalCards() }}</p>
+		<p>NanoBots: {{ getTotalCostInBots() }}</p>
+		
+		
+		
+</div>

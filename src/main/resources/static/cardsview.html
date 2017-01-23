@@ -1,0 +1,134 @@
+<div>
+	<div class="row">
+
+		<form>
+			<div class="form-group col-lg-4">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-search"></i>
+					</div>
+					<input type="text" class="form-control"
+						placeholder="Search by name" ng-model="searchName">
+
+				</div>
+			</div>
+		</form>
+
+		<form>
+			<div class="form-group col-lg-4">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-search"></i>
+					</div>
+					<input type="text" class="form-control"
+						placeholder="Search by text" ng-model="searchText">
+
+				</div>
+			</div>
+		</form>
+
+		<form>
+			<div class="form-group col-lg-4">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-search"></i>
+					</div>
+					<input type="text" class="form-control"
+						placeholder="Search by subtype" ng-model="searchSubtype">
+
+				</div>
+			</div>
+		</form>
+
+
+
+	</div>
+
+	<div class="row">
+		<div class="col-sm-3 col-xs-6 sort-dropdown">
+			<p>
+				Cost: <select ng-model="searchCost"
+					ng-options="item for item in cost">
+				</select>
+			</p>
+		</div>
+		<div class="col-sm-3 col-xs-6 sort-dropdown">
+			<p>
+				Type: <select ng-model="searchType"
+					ng-options="item for item in type">
+				</select>
+			</p>
+		</div>
+		<div class="col-sm-3 col-xs-6 sort-dropdown">
+			<p>
+				Aspect: <select ng-model="searchAspect"
+					ng-options="item as (item | aspect) for item in aspect">
+				</select>
+			</p>
+		</div>
+		<div class="col-sm-3 col-xs-6 sort-dropdown">
+			<p>
+				Rarity: <select ng-model="searchRarity"
+					ng-options="item as (item | rarity) for item in rarity">
+				</select>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-xs-12 reset-btn">
+			<button type="button" class="btn btn-primary"
+				ng-click="clearFilter()">Reset filters</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-xs-12">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<td ng-click="sortType = 'name'; sortReverse = !sortReverse">Name</td>
+						<td ng-click="sortType = 'cost'; sortReverse = !sortReverse">Cost</td>
+						<td ng-click="sortType = 'type'; sortReverse = !sortReverse">Type</td>
+						<td ng-click="sortType = 'subtype'; sortReverse = !sortReverse"
+							class="hidden-xs">Subtype</td>
+						<td ng-click="sortType = 'attack'; sortReverse = !sortReverse"
+							class="hidden-xs">Strength</td>
+						<td ng-click="sortType = 'health'; sortReverse = !sortReverse"
+							class="hidden-xs">Health</td>
+						<td ng-click="sortType = 'aspect'; sortReverse = !sortReverse"
+							class="hidden-xs">Aspect</td>
+						<td ng-click="sortType = 'rarity'; sortReverse = !sortReverse"
+							class="hidden-xs">Rarity</td>
+					</tr>
+				</thead>
+				<tbody
+					ng-repeat="c in cards | orderBy:sortType:sortReverse | filter:{name:searchName} | filter:{text:searchText} | filter:{subtype:searchSubtype} | filter:{rarity:searchRarity}
+				| filter:{cost:searchCost} | filter:{aspect:searchAspect} | filter:{type:searchType} ">
+					<tr ng-click="expanded = !expanded">
+						<td>{{c.name}}</td>
+						<td>{{c.cost}}</td>
+						<td>{{c.type}}</td>
+						<td class="hidden-xs">{{c.subtype}}</td>
+						<td class="hidden-xs">{{c.attack}}</td>
+						<td class="hidden-xs">{{c.health}}</td>
+						<td class="hidden-xs">{{c.aspect|aspect}}</td>
+						<td class="hidden-xs">{{c.rarity|rarity}}</td>
+					</tr>
+					<tr ng-show="expanded">
+						<td colspan="8">
+							<div class="row-fluid">
+								<div class="col-md-offset-2 col-md-8">
+									<p>
+										<span class="visible-xs"> {{c.aspect|aspect}}
+											({{c.rarity|rarity}}) <span ng-if="c.type=='Unit'"> -
+												{{c.subtype}} ({{c.attack}}/{{c.health}}) </span>
+										</span>{{c.text}}
+									</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
